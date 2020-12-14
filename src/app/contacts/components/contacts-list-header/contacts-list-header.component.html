@@ -1,0 +1,47 @@
+<div fxFlex class="contacts-header">
+  <div fxLayout="row" fxLayoutAlign="start center" class="contacts-header-label">
+    <div class="text" fxFlex="50" [innerHtml]="'Current Contacts'"></div>
+    <div class="options" fxFlex>
+      <pagination-controls
+        id="contacts-controls"
+        [maxSize]="0"
+        [previousLabel]="''"
+        [nextLabel]="''"
+        (pageChange)="setCurrentPage($event)">
+      </pagination-controls>
+    </div>
+  </div>
+  <div fxLayout="row" class="contacts-header-options" fxLayoutAlign="center center">
+    <div class="contacts-header-summary" fxFlex>
+      <span class="contact-count" [innerHtml]="getContactsCount()"></span>
+      <span class="contact-count-text" [innerHtml]="'Contacts'"></span>
+    </div>
+    <div class="contacts-header-summary failed" fxFlex>
+      <span class="contact-count" [innerHtml]="getFailedContactsCount()"></span>
+      <span class="contact-count-text" [innerHtml]="'Failed'"></span>
+    </div>
+    <div class="contacts-header-summary" fxFlex>
+      <span class="contact-count" [innerHtml]="getExecutingContactsCount()"></span>
+      <span class="contact-count-text" [innerHtml]="'Executing'"></span>
+    </div>
+    <div class="contacts-header-status" fxFlex="nogrow">
+      <label for="alerts-header-status-menu" [innerHtml]="'Status'"></label>
+      <select id="alerts-header-status-menu" class="rux-select" [(ngModel)]="statusFilter" (ngModelChange)="changeStatus($event)">
+        <option value="all" [innerHtml]="'All'"></option>
+        <option [ngValue]="status" [innerHtml]="status | titlecase" *ngFor="let status of statusList"></option>
+      </select>
+    </div>
+  </div>
+  <div class="contacts-header-columns" fxLayout="row" fxLayoutAlign="start center">
+    <div class="contact-status" fxFlex></div>
+    <div class="name" fxFlex="10%" *ngIf="hasContacts(contacts)">
+      <a href="#" [innerHtml]="'Name'" (click)="tapSort($event, 'contactName')"></a>
+    </div>
+    <div class="name" fxFlex="10%" [innerHtml]="'Name'" *ngIf="!hasContacts(contacts)"></div>
+    <div class="gs" fxFlex="10%" [innerHtml]="'GS'"></div>
+    <div class="equipment-string" fxFlex="40%" fxHide.lt-md [innerHtml]="'Equipment String'"></div>
+    <div class="status" fxFlex="20%" fxHide.lt-md [innerHtml]="'Status'"></div>
+    <div class="equipment-string-status" fxFlex="60%" fxHide fxShow.lt-md [innerHtml]="'Equipment String / Status'"></div>
+    <div class="aos-los" fxFlex="20%" [innerHtml]="'AOS - LOS'"></div>
+  </div>
+</div>

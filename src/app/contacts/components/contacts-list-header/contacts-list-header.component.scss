@@ -1,0 +1,48 @@
+@import 'src/styles/grm-mixins';
+@import 'src/styles/grm-pallet';
+
+:host {
+  @include list-header-host;
+}
+
+.contacts-header {
+  .contacts-header-label {
+    @include list-header-label;
+
+    .options {
+      text-align: right;
+    }
+  }
+
+  .contacts-header-summary {
+    @include list-header-summary;
+
+    &.failed {
+      color: $color-serious;
+    }
+
+    .contact-count {
+      @include list-header-count;
+    }
+
+    .contact-count-text {
+      @include list-header-count-text;
+    }
+  }
+
+  .contacts-header-options {
+    @include list-header-options;
+  }
+
+  .contacts-header-columns {
+    @include list-header-columns;
+
+    .contact-status {
+      min-width: 40px !important;
+
+      @include layout-bp(lt-sm) {
+        min-width: 30px !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+@import 'src/styles/grm-pallet';
+@import '~assets/css/astro.min.css';
+@import '../node_modules/@angular/flex-layout/mq';
+
+html, body {
+  height: 100%;
+}
+
+rux-global-status-bar {
+  min-height: 100px;
+  position: relative;
+}
+
+rux-notification {
+  flex: initial;
+  position: relative;
+}
+
+rux-progress {
+  display: inline-block;
+  height: 5rem;
+  width: 5rem;
+  margin: 2rem auto;
+}
+
+.rux-checkbox {
+  margin: 0 !important;
+}
+
+pagination-controls {
+  display: block;
+
+  pagination-template {
+    display: block;
+
+    .ngx-pagination {
+      margin: 0 !important;
+      padding: 0 !important;
+      line-height: 0;
+  
+      li {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 50px;
+        text-align: center;
+
+        @include layout-bp(lt-sm) {
+          width: 40px;
+        }
+
+        &.disabled {
+          opacity: 0.3;
+          padding: 0.75rem !important;
+        }
+
+        &:hover:not(.disabled) {
+          background-color: var(--colorSecondaryDarken3, $ui-color-secondary-darken3);
+        }
+
+        &::after,
+        &::before {
+          margin: 0 !important;
+          font-size: 2rem;
+          font-weight: 300;
+          line-height: 2rem;
+
+          @include layout-bp(lt-sm) {
+            padding: 0.5rem !important;
+          }
+        }
+
+        > a {
+          color: $color-text;
+          margin: 0 !important;
+          padding: 0.75rem !important;
+          font-size: 2rem;
+          font-weight: 300;
+          line-height: 2rem;
+          width: 50px;
+
+          @include layout-bp(lt-sm) {
+            width: 40px;
+          }
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+}

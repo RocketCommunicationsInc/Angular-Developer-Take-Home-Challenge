@@ -1,0 +1,41 @@
+@import 'src/styles/grm-mixins';
+
+.alert {
+  @include list-item-container;
+
+  .alert-row {
+    @include list-item-row;
+  }
+
+  .alert-details {
+    @include list-item-details;
+  }
+
+  .toggle {
+    text-align: center;
+    width: 60px;
+
+    @include layout-bp(lt-sm) {
+      width: 40px;
+    }
+
+    .rux-checkbox {
+      display: inline-flex;
+      margin: 0.5rem;
+      width: 1.4rem;
+      cursor: pointer;
+    }
+  }
+
+  .status {
+    width: 40px;
+  }
+
+  .rux-checkbox {
+    label {
+      &::before {
+        margin: 0;
+      }
+    }
+  }
+}
